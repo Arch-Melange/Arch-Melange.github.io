@@ -1,0 +1,22 @@
+title: "Arch Melange"
+description: "Arch-alapú disztrók és tematikus szoftvergyűjtemények fiatalos, letisztult stílusban."
+baseurl: "" # GitHub Pages user/organization site-nál üres, project site-nál: "/arch-melange"
+url: "https://felhasznalonev.github.io" # cseréld a sajátodra
+
+theme: null
+markdown: kramdown
+
+# Navigáció
+nav:
+  - name: "Kezdőlap"
+    link: "/"
+  - name: "ArchCod"
+    link: "/archcod"
+  - name: "ArchBio"
+    link: "/archbio"
+  - name: "ArchAstro"
+    link: "/archastro"
+  - name: "ArchRobo"
+    link: "/archrobo"
+  - name: "Rólunk"
+    link: "/about"
