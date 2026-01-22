@@ -1,0 +1,11 @@
+<header class="site-header">
+  <div class="brand">
+    <img src="{{ '/assets/img/arch-melange-icon.png' | relative_url }}" alt="Arch Melange ikon">
+    <span class="site-title">{{ site.title }}</span>
+  </div>
+  <nav class="site-nav">
+    {% for item in site.nav %}
+      <a href="{{ item.link | relative_url }}">{{ item.name }}</a>
+    {% endfor %}
+  </nav>
+</header>
