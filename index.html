@@ -1,0 +1,38 @@
+---
+layout: default
+title: Kezdőlap
+distros:
+  - name: Arch Code
+    description: "A végső fejlesztői környezet. Előre telepített IDE-k, fordítók, Docker, és Git eszközök. Minden, ami a kódoláshoz kell, dobozból."
+    style: "code" # Ez hivatkozik a CSS változóra
+    icon: "💻"
+  
+  - name: Arch Astro
+    description: "Fedezd fel az univerzumot! Csillagászati szoftverek, planetárium programok és teleszkóp vezérlők, asztrofotós eszközökkel."
+    style: "astro"
+    icon: "🚀"
+  
+  - name: Arch Robo
+    description: "Építsd meg a jövőt. ROS (Robot Operating System), szimulátorok, CAD tervezők és mikrokontroller programozó eszközök."
+    style: "robo"
+    icon: "🤖"
+---
+
+<div class="distro-grid">
+  {% for item in page.distros %}
+  <div class="card">
+    <div class="card-ribbon" style="background: var(--accent-{{ item.style }});"></div>
+    
+    <div class="card-content">
+      <span class="kde-badge">KDE Plasma Desktop</span>
+      <h2>{{ item.icon }} {{ item.name }}</h2>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div style="text-align: center; margin-top: 3rem;">
+    <p style="color: #94a3b8;">Minden rendszer alapja a testreszabható és modern</p>
+    <h3 style="color: #38bdf8;">KDE Plasma Desktop</h3>
+</div>
