@@ -1,22 +1,5 @@
-title: "Arch Melange"
-description: "Arch-alapú disztrók és tematikus szoftvergyűjtemények fiatalos, letisztult stílusban."
-baseurl: "" # GitHub Pages user/organization site-nál üres, project site-nál: "/arch-melange"
-url: "https://felhasznalonev.github.io" # cseréld a sajátodra
-
+title: Arch Melange
+description: Speciális Arch Linux disztribúciók KDE Plasma környezettel.
+baseurl: "/arch-melange" # Ha a repó neve nem felhasznalonev.github.io, akkor hagyd ezt itt.
+url: "https://felhasznalonev.github.io" # Cseréld le a sajátodra
 theme: null
-markdown: kramdown
-
-# Navigáció
-nav:
-  - name: "Kezdőlap"
-    link: "/"
-  - name: "ArchCod"
-    link: "/archcod"
-  - name: "ArchBio"
-    link: "/archbio"
-  - name: "ArchAstro"
-    link: "/archastro"
-  - name: "ArchRobo"
-    link: "/archrobo"
-  - name: "Rólunk"
-    link: "/about"
