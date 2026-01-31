@@ -1,103 +1,195 @@
 :root {
-  --bg-color: #0f172a;       /* Mély sötétkék/fekete */
-  --card-bg: #1e293b;        /* Kicsit világosabb kártya háttér */
-  --text-main: #f1f5f9;      /* Fehér szöveg */
-  --text-muted: #94a3b8;     /* Szürke szöveg */
-  --accent-code: linear-gradient(135deg, #00c6ff, #0072ff);  /* Kék - Programozás */
-  --accent-astro: linear-gradient(135deg, #a18cd1, #fbc2eb); /* Lila - Csillagászat */
-  --accent-robo: linear-gradient(135deg, #f6d365, #fda085);  /* Narancs - Robotika */
+  --bg-dark: #050505;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #ffffff;
+  --text-muted: #888888;
+  
+  /* Színkódok */
+  --color-code: #00d2ff;  /* Ciánkék */
+  --color-astro: #b249f8; /* Neon lila */
+  --color-robo: #ff9900;  /* Borostyán sárga */
 }
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-color);
+  background-color: var(--bg-dark);
   color: var(--text-main);
-  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
-header {
-  text-align: center;
-  padding: 4rem 1rem;
-  background: radial-gradient(circle at top, #334155 0%, var(--bg-color) 70%);
+/* Háttér hangulatfény (Ambient Glow) */
+.ambient-glow {
+  position: fixed;
+  top: -20%;
+  left: 20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(66, 135, 245, 0.15) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(80px);
+  z-index: -1;
+  animation: float 10s infinite ease-in-out;
 }
 
-h1 {
-  font-size: 3.5rem;
-  margin: 0;
-  background: linear-gradient(to right, #ff00cc, #333399); /* Fő cím színátmenet */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 800;
-  letter-spacing: -1px;
-}
-
-.subtitle {
-  color: var(--text-muted);
-  font-size: 1.2rem;
-  margin-top: 1rem;
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-50px, 20px); }
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 1.5rem;
 }
 
-/* Kártyák elrendezése (Grid) */
+/* Header */
+header {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 5, 5, 0.7);
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.dot { color: var(--color-code); }
+
+nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-left: 2rem;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+nav a:hover { color: white; }
+
+.btn-small {
+  background: white;
+  color: black !important;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 6rem 1rem 4rem;
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(180deg, #fff, #888);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+/* Grid rendszer (Bento Grid) */
 .distro-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 5rem;
 }
 
-/* Kártya stílus */
+/* Modern Üveg Kártyák */
 .card {
-  background-color: var(--card-bg);
-  border-radius: 15px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-
-/* Színes csík a kártyák tetején */
-.card-ribbon {
-  height: 8px;
-  width: 100%;
-}
-
-.card-content {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
   padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hover effekt: felemelkedés és keret színezés */
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+}
+
+/* Specifikus Hover színek a kártyákhoz */
+.card[data-style="code"]:hover { border-color: var(--color-code); box-shadow: 0 0 30px rgba(0, 210, 255, 0.1); }
+.card[data-style="astro"]:hover { border-color: var(--color-astro); box-shadow: 0 0 30px rgba(178, 73, 248, 0.1); }
+.card[data-style="robo"]:hover { border-color: var(--color-robo); box-shadow: 0 0 30px rgba(255, 153, 0, 0.1); }
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .card h2 {
-  margin-top: 0;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
 }
 
-.kde-badge {
-  display: inline-block;
-  background: rgba(255,255,255,0.1);
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 0.8rem;
+.kde-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
   margin-bottom: 1rem;
-  color: #38bdf8; /* KDE kék */
-  font-weight: bold;
+  display: block;
 }
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.card-link {
+  margin-top: 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+
+.card[data-style="code"] .card-link { color: var(--color-code); }
+.card[data-style="astro"] .card-link { color: var(--color-astro); }
+.card[data-style="robo"] .card-link { color: var(--color-robo); }
 
 footer {
+  border-top: 1px solid var(--glass-border);
+  padding: 3rem 0;
   text-align: center;
-  padding: 3rem;
   color: var(--text-muted);
   font-size: 0.9rem;
-  border-top: 1px solid #334155;
-  margin-top: 4rem;
+}
+
+.highlight { color: white; }
+
+/* Mobil nézet */
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem; }
 }
