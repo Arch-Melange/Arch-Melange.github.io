@@ -3,36 +3,40 @@ layout: default
 title: Kezdőlap
 distros:
   - name: Arch Code
-    description: "A végső fejlesztői környezet. Előre telepített IDE-k, fordítók, Docker, és Git eszközök. Minden, ami a kódoláshoz kell, dobozból."
-    style: "code" # Ez hivatkozik a CSS változóra
-    icon: "💻"
+    description: "A fejlesztés új dimenziója. Prekonfigurált Neovim, VS Code, Docker konténerek és alacsony szintű fordítók."
+    style: "code"
+    icon: "⚡"
   
   - name: Arch Astro
-    description: "Fedezd fel az univerzumot! Csillagászati szoftverek, planetárium programok és teleszkóp vezérlők, asztrofotós eszközökkel."
+    description: "Nézz fel az égre. Stellarium, KStars és asztrofotós képfeldolgozó szoftverek egy optimalizált kernelen."
     style: "astro"
-    icon: "🚀"
+    icon: "🪐"
   
   - name: Arch Robo
-    description: "Építsd meg a jövőt. ROS (Robot Operating System), szimulátorok, CAD tervezők és mikrokontroller programozó eszközök."
+    description: "Automatizálj mindent. ROS 2 Humble, Gazebo szimulátor és mikrokontroller toolchainek (ESP32, STM32)."
     style: "robo"
     icon: "🤖"
 ---
 
-<div class="distro-grid">
-  {% for item in page.distros %}
-  <div class="card">
-    <div class="card-ribbon" style="background: var(--accent-{{ item.style }});"></div>
-    
-    <div class="card-content">
-      <span class="kde-badge">KDE Plasma Desktop</span>
-      <h2>{{ item.icon }} {{ item.name }}</h2>
-      <p>{{ item.description }}</p>
-    </div>
-  </div>
-  {% endfor %}
-</div>
+<div class="container">
+    <section class="hero">
+        <h1>Az Arch Linux<br>Három Arca.</h1>
+        <p>A minimalizmus találkozása a célspecifikus erővel. Válaszd ki az elemed, és élvezd a KDE Plasma fluiditását.</p>
+    </section>
 
-<div style="text-align: center; margin-top: 3rem;">
-    <p style="color: #94a3b8;">Minden rendszer alapja a testreszabható és modern</p>
-    <h3 style="color: #38bdf8;">KDE Plasma Desktop</h3>
+    <div class="distro-grid">
+      {% for item in page.distros %}
+      <div class="card" data-style="{{ item.style }}">
+        <div class="card-icon">{{ item.icon }}</div>
+        
+        <div>
+            <span class="kde-tag">Plasma 6 Desktop</span>
+            <h2>{{ item.name }}</h2>
+            <p>{{ item.description }}</p>
+        </div>
+
+        <a href="#" class="card-link">Felfedezés &rarr;</a>
+      </div>
+      {% endfor %}
+    </div>
 </div>
